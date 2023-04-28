@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/container_margin"
-    tools:context=".activity.MainActivity">
+    tools:context="com.pil.movieApp.activity.MainActivity"
+    >
 
     <TextView
         android:id="@+id/title"
         style="@style/TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exercises"
+        android:text="@string/movies"
         app:layout_constraintBottom_toTopOf="@id/recycler"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -7,33 +7,33 @@
     android:layout_margin="@dimen/container_margin"
     android:background="@android:color/darker_gray"
     android:elevation="@dimen/card_elevation"
-    tools:context=".activity.MainActivity">
+    tools:context="com.pil.movieApp.activity.MainActivity" >
 
     <TextView
-        android:id="@+id/id"
+        android:id="@+id/movie_title"
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="ID: id" />
+        tools:text="Title: title" />
 
     <TextView
-        android:id="@+id/is_main"
+        android:id="@+id/overview"
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Is main: isMain" />
+        tools:text="Overview: overview" />
 
     <TextView
-        android:id="@+id/license_author"
+        android:id="@+id/release_date"
         style="@style/TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/id"
-        tools:text="License author: license" />
+        app:layout_constraintTop_toBottomOf="@id/movie_title"
+        tools:text="Release Date: license" />
 
     <ImageView
         android:id="@+id/image"
@@ -43,6 +43,6 @@
         android:contentDescription="@string/content_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/license_author" />
+        app:layout_constraintTop_toBottomOf="@id/release_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
