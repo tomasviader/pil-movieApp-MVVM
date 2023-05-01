@@ -1,6 +1,8 @@
 package com.pil.movieApp.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,46 +22,15 @@ import com.pil.retrofit_room.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainContract.ViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dataBase: MovieRoomDataBase by lazy {
-            Room
-                .databaseBuilder(this, MovieRoomDataBase::class.java, "Movie-DataBase")
-                .build()
+        binding.btnMovies.setOnClickListener {
+            val intent = Intent(this, MovieActivity::class.java)
+            startActivity(intent)
+
         }
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(
-                arrayOf(
-                    MainModel(
-                        MovieServiceImpl(MovieRequestGenerator.createService(MovieClient::class.java)),
-                        MovieDataBaseImpl(dataBase.moviesDao()),
-                    ),
-                ),
-            ),
-        )[MainViewModel::class.java]
-
-        viewModel.getValue().observe(this) { updateUI(it) }
-    }
-
-    private fun updateUI(data: MainViewModel.MainData) {
-        when (data.status) {
-            MainViewModel.MainStatus.SHOW_INFO -> {
-                binding.recycler.layoutManager = LinearLayoutManager(this)
-                binding.recycler.adapter = MovieAdapter(data.movies)
-            }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.callService()
     }
 }

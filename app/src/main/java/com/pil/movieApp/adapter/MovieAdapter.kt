@@ -26,12 +26,12 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
         private val binding = ItemRecyclerBinding.bind(itemView)
 
         fun bind(movie: Movie) {
-            binding.movieTitle.text = itemView.context.getString(R.string.card_id, movie.title)
-            binding.overview.text = itemView.context.getString(R.string.card_is_main, movie.overview)
-            binding.releaseDate.text = itemView.context.getString(R.string.card_license_author, movie.releaseDate)
+            binding.movieTitle.text = itemView.context.getString(R.string.card_title, movie.title)
+            binding.overview.text = itemView.context.getString(R.string.card_overview, movie.overview)
+            binding.releaseDate.text = itemView.context.getString(R.string.card_release_date, movie.releaseDate)
 
             Glide.with(itemView.context)
-                .load(movie.posterPath)
+                .load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
                 .into(binding.image)
         }
     }
