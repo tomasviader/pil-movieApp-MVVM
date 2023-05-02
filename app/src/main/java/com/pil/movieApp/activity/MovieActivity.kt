@@ -71,7 +71,10 @@ class MovieActivity : AppCompatActivity() {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
                 binding.recycler.layoutManager = LinearLayoutManager(this)
-                binding.recycler.adapter = MovieAdapter(data.movies)
+                binding.recycler.adapter = data.movies?.let { MovieAdapter(it) }
+            }
+            MainViewModel.MainStatus.EMPTY_STATE -> {
+                binding.emptyStateText.visibility = data.isVisible
             }
         }
     }
