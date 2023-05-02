@@ -5,33 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/container_margin"
+    android:background="@drawable/background_app"
     tools:context="com.pil.movieApp.activity.MainActivity"
     >
 
+    <!-- <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        /> -->
 
     <TextView
         android:id="@+id/title"
         style="@style/TitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="30dp"
         android:text="@string/movies"
-        app:layout_constraintBottom_toTopOf="@id/recycler"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+         />
 
     <TextView
         android:id="@+id/appDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#B8C1F6"
         android:text="@string/description_text"
         app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toTopOf="@+id/btnMovies"
+        app:layout_constraintBottom_toTopOf="@id/btnMovies"
          />
 
     <Button
         android:id="@+id/btnMovies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#222C47"
         android:text="@string/btn_text"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,7 +54,7 @@
         android:layout_marginBottom="48dp"
         android:layout_marginStart="20dp"
         android:text="BACK"
-        android:background="#2B2525"
+        android:background="#222C47"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

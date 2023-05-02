@@ -18,6 +18,7 @@ import com.pil.movieApp.mvvm.viewmodel.factory.ViewModelFactory
 import com.pil.movieApp.service.MovieClient
 import com.pil.movieApp.service.MovieRequestGenerator
 import com.pil.movieApp.service.MovieServiceImpl
+import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 
 
@@ -32,6 +33,9 @@ class MovieActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = Intent(this, MainActivity::class.java)
+
+        /*val toolbar = binding.root.findViewById<View>(R.id.toolbar)
+        toolbar.visibility = View.VISIBLE*/
 
         with(binding.btnBack){
             visibility = View.VISIBLE

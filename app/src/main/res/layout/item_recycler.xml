@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/container_margin"
-    android:background="@android:color/darker_gray"
+    android:background="@drawable/background_app"
     android:elevation="@dimen/card_elevation"
     tools:context="com.pil.movieApp.activity.MainActivity" >
+
+
 
 
     <TextView
@@ -37,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintBottom_toTopOf="@id/release_date"
         app:layout_constraintRight_toRightOf="parent"
@@ -46,7 +48,7 @@
 
     <TextView
         android:id="@+id/release_date"
-        style="@style/TitleStyle"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -73,7 +75,7 @@
 
     <TextView
         android:id="@+id/original_language"
-        style="@style/TitleStyle"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

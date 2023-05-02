@@ -19,8 +19,7 @@ class MainModel(
             }
 
             is CoroutineResult.Failure -> {
-                CoroutineResult.Success(database.getAllMovies())
-
+                    CoroutineResult.Success(database.getAllMovies())
             }
         }
     }
