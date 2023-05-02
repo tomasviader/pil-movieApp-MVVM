@@ -6,6 +6,9 @@
     <string name="card_title">Title: %1$s</string>
     <string name="card_overview">Overview: %1$s</string>
     <string name="card_release_date">Release date: %1$s</string>
+    <string name="card_vote_count">Vote count: %1$s</string>
+    <string name="card_vote_average">Vote average: %1$s</string>
+    <string name="card_original_language">Original language: %1$s</string>
     <string name="content_description">contentDescription</string>
     <string name="description_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
     <string name="btn_text">Get movies</string>

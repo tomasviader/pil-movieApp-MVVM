@@ -1,6 +1,8 @@
 package com.pil.movieApp.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +20,7 @@ import com.pil.movieApp.service.MovieRequestGenerator
 import com.pil.movieApp.service.MovieServiceImpl
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 
+
 class MovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -25,12 +28,18 @@ class MovieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnMovies.visibility = View.GONE
-        binding.appDescription.visibility = View.GONE
+        val intent = Intent(this, MainActivity::class.java)
+
+        with(binding.btnBack){
+            visibility = View.VISIBLE
+            setOnClickListener {
+                startActivity(intent)
+                finish()
+            }
+        }
 
         val dataBase: MovieRoomDataBase by lazy {
             Room
@@ -53,6 +62,7 @@ class MovieActivity : AppCompatActivity() {
         viewModel.getValue().observe(this) { updateUI(it) }
     }
 
+
     private fun updateUI(data: MainViewModel.MainData) {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
@@ -65,5 +75,8 @@ class MovieActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.callService()
+        binding.btnMovies.visibility = View.GONE
+        binding.appDescription.visibility = View.GONE
+
     }
 }

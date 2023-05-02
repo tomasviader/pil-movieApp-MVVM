@@ -29,6 +29,9 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
             binding.movieTitle.text = itemView.context.getString(R.string.card_title, movie.title)
             binding.overview.text = itemView.context.getString(R.string.card_overview, movie.overview)
             binding.releaseDate.text = itemView.context.getString(R.string.card_release_date, movie.releaseDate)
+            binding.voteCount.text = itemView.context.getString(R.string.card_vote_count, movie.voteCount.toString())
+            binding.voteAverage.text = itemView.context.getString(R.string.card_vote_average, movie.voteAverage.toString())
+            binding.originalLanguage.text = itemView.context.getString(R.string.card_original_language, movie.originalLanguage)
 
             Glide.with(itemView.context)
                 .load("https://image.tmdb.org/t/p/w500" + movie.posterPath)

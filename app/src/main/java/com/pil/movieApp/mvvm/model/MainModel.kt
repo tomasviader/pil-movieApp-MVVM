@@ -20,6 +20,7 @@ class MainModel(
 
             is CoroutineResult.Failure -> {
                 CoroutineResult.Success(database.getAllMovies())
+
             }
         }
     }

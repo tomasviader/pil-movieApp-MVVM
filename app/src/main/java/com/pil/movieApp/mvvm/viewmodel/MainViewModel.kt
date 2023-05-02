@@ -1,5 +1,6 @@
 package com.pil.movieApp.mvvm.viewmodel
 
+import android.os.Build.VERSION_CODES.M
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,7 +24,7 @@ class MainViewModel(private val model: MainContract.Model) : ViewModel(), MainCo
                     mutableLiveData.value = MainData(MainStatus.SHOW_INFO, result.data)
                 }
                 is CoroutineResult.Failure -> {
-                    // TODO: Check what to do here
+
                 }
             }
         }
@@ -35,6 +36,6 @@ class MainViewModel(private val model: MainContract.Model) : ViewModel(), MainCo
     )
 
     enum class MainStatus {
-        SHOW_INFO,
+        SHOW_INFO
     }
 }
