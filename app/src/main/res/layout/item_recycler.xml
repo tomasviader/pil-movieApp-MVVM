@@ -10,12 +10,10 @@
     tools:context="com.pil.movieApp.activity.MainActivity" >
 
 
-
-
     <TextView
         android:id="@+id/movie_title"
         style="@style/TitleStyle"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +24,7 @@
         android:id="@+id/image"
         android:layout_width="300dp"
         android:layout_height="450dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         android:contentDescription="@string/content_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,7 +36,7 @@
         android:id="@+id/overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintBottom_toTopOf="@id/release_date"
@@ -51,25 +49,25 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         app:layout_constraintTop_toBottomOf="@id/overview"
         tools:text="Release Date: releaseDate" />
 
     <TextView
         android:id="@+id/vote_count"
-        android:textColor="#F60202"
+        android:textColor="@color/vote_count_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         app:layout_constraintTop_toBottomOf="@id/release_date"
         tools:text="Vote count: voteCount" />
 
     <TextView
         android:id="@+id/vote_average"
-        android:textColor="#6E3CC6"
+        android:textColor="@color/vote_average_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         app:layout_constraintTop_toBottomOf="@id/vote_count"
         tools:text="Vote average: voteAverage" />
 
@@ -78,9 +76,9 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/recycler_margin_top"
         app:layout_constraintTop_toBottomOf="@id/vote_average"
-        tools:text="Original language: originalLanguaje" />
+        tools:text="Original language: originalLanguage" />
 
 
 

@@ -2,11 +2,12 @@ package com.pil.movieApp.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.pil.movieApp.adapter.MovieAdapter
 import com.pil.movieApp.database.MovieDataBaseImpl
@@ -18,7 +19,6 @@ import com.pil.movieApp.mvvm.viewmodel.factory.ViewModelFactory
 import com.pil.movieApp.service.MovieClient
 import com.pil.movieApp.service.MovieRequestGenerator
 import com.pil.movieApp.service.MovieServiceImpl
-import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 
 
@@ -34,11 +34,8 @@ class MovieActivity : AppCompatActivity() {
 
         val intent = Intent(this, MainActivity::class.java)
 
-        /*val toolbar = binding.root.findViewById<View>(R.id.toolbar)
-        toolbar.visibility = View.VISIBLE*/
-
         with(binding.btnBack){
-            visibility = View.VISIBLE
+            visibility = VISIBLE
             setOnClickListener {
                 startActivity(intent)
                 finish()
@@ -70,11 +67,13 @@ class MovieActivity : AppCompatActivity() {
     private fun updateUI(data: MainViewModel.MainData) {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
-                binding.recycler.layoutManager = LinearLayoutManager(this)
-                binding.recycler.adapter = data.movies?.let { MovieAdapter(it) }
-            }
-            MainViewModel.MainStatus.EMPTY_STATE -> {
-                binding.emptyStateText.visibility = data.isVisible
+                if (data.movies.isEmpty()){
+                    binding.emptyStateText.visibility = RecyclerView.VISIBLE
+                }
+                else{
+                    binding.recycler.layoutManager = LinearLayoutManager(this)
+                    binding.recycler.adapter = MovieAdapter(data.movies)
+                }
             }
         }
     }
@@ -82,8 +81,10 @@ class MovieActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.callService()
-        binding.btnMovies.visibility = View.GONE
-        binding.appDescription.visibility = View.GONE
 
+        with(binding){
+            btnMovies.visibility = GONE
+            appDescription.visibility = GONE
+        }
     }
 }

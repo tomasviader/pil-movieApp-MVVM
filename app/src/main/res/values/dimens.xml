@@ -4,4 +4,12 @@
     <dimen name="container_margin">30dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="image_size">100dp</dimen>
+    <dimen name="padding_top_title">30dp</dimen>
+    <dimen name="btn_back_text_size">20sp</dimen>
+    <dimen name="btn_back_margin_start">20dp</dimen>
+    <dimen name="btn_back_margin_bottom">48dp</dimen>
+    <dimen name="empty_state_margin_top">30dp</dimen>
+    <dimen name="recycler_margin_top">60dp</dimen>
+    <dimen name="image_margin_top">48dp</dimen>
+    <dimen name="overview_margin_top">30dp</dimen>
 </resources>
