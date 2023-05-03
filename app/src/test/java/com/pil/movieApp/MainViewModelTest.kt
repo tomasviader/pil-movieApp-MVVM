@@ -26,12 +26,14 @@ class MainViewModelTest {
     fun setup() {
         viewModel = MainViewModel(model)
         viewModel.getValue().observeForever { }
+
         every { mutableLiveData.value = any() } just Runs
         every { mutableLiveData.postValue(any()) } just Runs
     }
 
     @Test
     fun `callService should set SHOW_INFO status when getMovies is successful`() {
+
         coEvery { model.getMovies() } returns CoroutineResult.Success(listOf())
 
         viewModel.callService()
