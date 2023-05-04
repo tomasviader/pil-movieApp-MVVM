@@ -15,5 +15,6 @@
     <string name="empty_state_message">Try again later</string>
     <string name="coroutine_failure_message">The application could not obtain the requested data.</string>
     <string name="button_back_text">BACK</string>
+    <string name="error_button">ERROR BUTTON</string>
 
 </resources>

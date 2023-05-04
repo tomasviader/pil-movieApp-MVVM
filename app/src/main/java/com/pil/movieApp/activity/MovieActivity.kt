@@ -67,15 +67,15 @@ class MovieActivity : AppCompatActivity() {
     private fun updateUI(data: MainViewModel.MainData) {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
-                if (data.movies?.isEmpty() == true){
+                if (data.movies.isEmpty()){
                     binding.emptyStateText.visibility = RecyclerView.VISIBLE
                 }
                 else{
                     binding.recycler.layoutManager = LinearLayoutManager(this)
-                    binding.recycler.adapter = data.movies?.let { MovieAdapter(it) }
+                    binding.recycler.adapter =  MovieAdapter(data.movies)
                 }
             }
-            else -> {
+            MainViewModel.MainStatus.ERROR -> {
                 binding.emptyStateText.visibility = RecyclerView.VISIBLE
             }
         }
