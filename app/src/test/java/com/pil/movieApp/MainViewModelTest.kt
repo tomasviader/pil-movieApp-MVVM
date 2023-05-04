@@ -1,12 +1,19 @@
 package com.pil.movieApp
 
-import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import com.pil.movieApp.mvvm.contract.MainContract
 import com.pil.movieApp.mvvm.viewmodel.MainViewModel
+import com.pil.movieApp.service.model.Movie
 import com.pil.movieApp.util.CoroutineResult
 import io.mockk.*
+import io.mockk.impl.annotations.MockK
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -19,46 +26,45 @@ class MainViewModelTest {
     val rule: TestRule = InstantTaskExecutorRule()
 
     private lateinit var viewModel: MainViewModel
-    private val model: MainContract.Model = mockk()
-    private val mutableLiveData: MutableLiveData<MainViewModel.MainData> = spyk()
 
+    @MockK
+    private lateinit var model: MainContract.Model
+
+    @MockK
+    private lateinit var movieList: List<Movie>
+
+
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setup() {
+        Dispatchers.setMain(UnconfinedTestDispatcher())
+        MockKAnnotations.init(this, relaxUnitFun = true)
         viewModel = MainViewModel(model)
-        viewModel.getValue().observeForever { }
+    }
 
-        every { mutableLiveData.value = any() } just Runs
-        every { mutableLiveData.postValue(any()) } just Runs
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
     }
 
     @Test
     fun `callService should set SHOW_INFO status when getMovies is successful`() {
+        coEvery { model.getMovies() } returns CoroutineResult.Success(movieList)
 
-        coEvery { model.getMovies() } returns CoroutineResult.Success(listOf())
+        runBlocking { viewModel.callService().join() }
 
-        viewModel.callService()
-
-        val expectedData = MainViewModel.MainData(
-            MainViewModel.MainStatus.SHOW_INFO,
-            listOf(),
-            View.INVISIBLE
-        )
-
-        assertEquals(expectedData.status, mutableLiveData.value)
+        assertEquals(movieList, viewModel.getValue().value?.movies)
+        assertEquals(MainViewModel.MainStatus.SHOW_INFO, viewModel.getValue().value?.status)
     }
-
     @Test
-    fun `callService should set EMPTY_STATE status when getMovies fails`() {
+    fun `callService should set ERROR status when getMovies fail`() {
         coEvery { model.getMovies() } returns CoroutineResult.Failure(Exception())
 
-        viewModel.callService()
+        runBlocking { viewModel.callService().join() }
 
-        val expectedData = MainViewModel.MainData(
-            MainViewModel.MainStatus.EMPTY_STATE,
-            null,
-            View.VISIBLE
-        )
-
-        assertEquals(expectedData, mutableLiveData.value)
+        assertEquals(MainViewModel.MainStatus.ERROR, viewModel.getValue().value?.status)
     }
+
+
 }

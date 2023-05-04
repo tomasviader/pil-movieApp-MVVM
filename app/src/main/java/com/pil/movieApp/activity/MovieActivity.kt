@@ -72,8 +72,11 @@ class MovieActivity : AppCompatActivity() {
                 }
                 else{
                     binding.recycler.layoutManager = LinearLayoutManager(this)
-                    binding.recycler.adapter = MovieAdapter(data.movies)
+                    binding.recycler.adapter =  MovieAdapter(data.movies)
                 }
+            }
+            MainViewModel.MainStatus.ERROR -> {
+                binding.emptyStateText.visibility = RecyclerView.VISIBLE
             }
         }
     }
