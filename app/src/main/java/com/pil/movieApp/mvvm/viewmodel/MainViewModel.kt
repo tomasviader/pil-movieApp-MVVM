@@ -26,7 +26,7 @@ class MainViewModel(private val model: MainContract.Model) : ViewModel(), MainCo
                     mutableLiveData.value = MainData(MainStatus.SHOW_INFO, result.data)
                 }
                 is CoroutineResult.Failure -> {
-                    throw ServiceErrorException(R.string.coroutine_failure_message.toString())
+                    throw ServiceErrorException(R.string.coroutine_failure_message.toStr7ing())
                 }
             }
         }
