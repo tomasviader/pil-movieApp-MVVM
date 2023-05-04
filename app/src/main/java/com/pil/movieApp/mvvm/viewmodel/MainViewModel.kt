@@ -23,10 +23,17 @@ class MainViewModel(private val model: MainContract.Model) : ViewModel(), MainCo
         withContext(Dispatchers.IO) { model.getMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableLiveData.value = MainData(MainStatus.SHOW_INFO, result.data)
+                    mutableLiveData.value = mutableLiveData.value?.copy(
+                        status = MainStatus.SHOW_INFO,
+                        movies = result.data,
+                        exception = null
+                    )
                 }
                 is CoroutineResult.Failure -> {
-                    throw ServiceErrorException(R.string.coroutine_failure_message.toString())
+                    mutableLiveData.value =
+                        mutableLiveData.value?.copy(
+                            status = MainStatus.ERROR,
+                            exception = result.exception)
                 }
             }
         }
@@ -34,10 +41,12 @@ class MainViewModel(private val model: MainContract.Model) : ViewModel(), MainCo
 
     data class MainData(
         val status: MainStatus,
-        val movies: List<Movie>,
+        val movies: List<Movie>?,
+        val exception: Exception?,
     )
 
     enum class MainStatus {
-        SHOW_INFO
+        SHOW_INFO,
+        ERROR
     }
 }
