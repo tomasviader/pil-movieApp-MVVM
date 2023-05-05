@@ -4,10 +4,14 @@ import com.pil.movieApp.database.dao.MovieDao
 import com.pil.movieApp.database.mapper.mapToDataBaseExercise
 import com.pil.movieApp.database.mapper.mapToLocalExercise
 import com.pil.movieApp.service.model.Movie
+import com.pil.movieApp.util.CoroutineResult
+import java.lang.Exception
 
 interface MovieDataBase {
     suspend fun insertMovies(movies: List<Movie>)
+
     suspend fun getAllMovies(): List<Movie>
+
 }
 
 class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
@@ -22,3 +26,4 @@ class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
         return movieDao.getPopularMovies().mapToLocalExercise()
     }
 }
+

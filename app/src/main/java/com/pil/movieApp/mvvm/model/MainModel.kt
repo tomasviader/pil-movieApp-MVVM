@@ -5,6 +5,7 @@ import com.pil.movieApp.mvvm.contract.MainContract
 import com.pil.movieApp.service.MovieService
 import com.pil.movieApp.service.model.Movie
 import com.pil.movieApp.util.CoroutineResult
+import java.lang.Exception
 
 class MainModel(
     private val service: MovieService,
@@ -19,7 +20,11 @@ class MainModel(
             }
 
             is CoroutineResult.Failure -> {
-                CoroutineResult.Success(database.getAllMovies())
+                if (database.getAllMovies().isNotEmpty()){
+                    CoroutineResult.Success(database.getAllMovies())
+                }else{
+                    CoroutineResult.Failure(Exception())
+                }
             }
         }
     }
