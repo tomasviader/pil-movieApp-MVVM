@@ -8,4 +8,22 @@
         <item name="android:textSize">@dimen/title_text_size</item>
     </style>
 
+    <style name="AppDescriptionStyle">
+        <item name="android:textColor">@color/description_text_color</item>
+        <item name="android:textSize">@dimen/description_text_size</item>
+    </style>
+
+    <style name="OverviewStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/overview_text_size</item>
+    </style>
+
+     <style name="ReleaseDateStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/realease_text_size</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textFontWeight">900</item>
+    </style>
+
+
 </resources>

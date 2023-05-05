@@ -57,6 +57,7 @@ class MainViewModelTest {
         assertEquals(movieList, viewModel.getValue().value?.movies)
         assertEquals(MainViewModel.MainStatus.SHOW_INFO, viewModel.getValue().value?.status)
     }
+
     @Test
     fun `callService should set ERROR status when getMovies fail`() {
         coEvery { model.getMovies() } returns CoroutineResult.Failure(Exception())

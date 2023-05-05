@@ -9,7 +9,16 @@
     <dimen name="btn_back_margin_start">20dp</dimen>
     <dimen name="btn_back_margin_bottom">48dp</dimen>
     <dimen name="empty_state_margin_top">30dp</dimen>
-    <dimen name="recycler_margin_top">60dp</dimen>
+    <dimen name="recycler_margin_top">30dp</dimen>
     <dimen name="image_margin_top">48dp</dimen>
     <dimen name="overview_margin_top">30dp</dimen>
+    <dimen name="margin_top_btn_back">30dp</dimen>
+    <dimen name="title_margin">16dp</dimen>
+    <dimen name="description_text_size">20sp</dimen>
+    <dimen name="margin_top_description">150dp</dimen>
+    <dimen name="description_width">250dp</dimen>
+    <dimen name="image_width">300dp</dimen>
+    <dimen name="image_height">450dp</dimen>
+    <dimen name="overview_text_size">18sp</dimen>
+    <dimen name="realease_text_size">16sp</dimen>
 </resources>

@@ -9,13 +9,26 @@
     tools:context="com.pil.movieApp.activity.MainActivity"
     >
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/container_margin"
+        android:src="@drawable/ic_arrow_left"
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="@string/description_floating_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:visibility="invisible" />
+
     <Button
         android:id="@+id/errorDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/error_button_background"
-        android:text="@string/error_button"
         android:textColor="@color/black"
+        android:text="@string/error_button"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/btnMovies"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -25,49 +38,39 @@
     <TextView
         android:id="@+id/title"
         style="@style/TitleStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_margin"
         android:paddingTop="@dimen/padding_top_title"
         android:text="@string/movies"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/appDescription"
-        android:layout_width="match_parent"
+        style="@style/AppDescriptionStyle"
+        android:layout_width="@dimen/description_width"
         android:layout_height="wrap_content"
-        android:textColor="@color/description_text_color"
+        android:layout_marginTop="@dimen/margin_top_description"
         android:text="@string/description_text"
         app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toTopOf="@id/btnMovies"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
          />
 
     <Button
         android:id="@+id/btnMovies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_description"
         android:background="@color/background_button_movies"
         android:text="@string/btn_text"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/appDescription"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
          />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/btn_back_margin_bottom"
-        android:layout_marginStart="@dimen/btn_back_margin_start"
-        android:text="@string/button_back_text"
-        android:background="@color/btn_back_background"
-        android:textColor="@color/white"
-        android:textSize="@dimen/btn_back_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
 
     <TextView
         android:id="@+id/empty_state_text"
@@ -89,6 +92,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/container_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"  />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
