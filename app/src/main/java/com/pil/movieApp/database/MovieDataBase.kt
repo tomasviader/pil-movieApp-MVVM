@@ -9,8 +9,6 @@ import java.lang.Exception
 
 interface MovieDataBase {
     suspend fun insertMovies(movies: List<Movie>)
-
-    // suspend fun getAllMovies(): List<Movie>
     suspend fun getAllMovies(): CoroutineResult<List<Movie>>
 
 }
@@ -22,10 +20,6 @@ class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
             movieDao.insertMovie(exercise.mapToDataBaseExercise())
         }
     }
-
-   /* override suspend fun getAllMovies(): List<Movie> {
-        return movieDao.getPopularMovies().mapToLocalExercise()
-    }*/
 
     override suspend fun getAllMovies(): CoroutineResult<List<Movie>> {
         return movieDao.getPopularMovies().let {

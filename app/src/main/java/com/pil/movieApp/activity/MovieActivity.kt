@@ -88,6 +88,7 @@ class MovieActivity : AppCompatActivity() {
         with(binding){
             btnMovies.visibility = GONE
             appDescription.visibility = GONE
+            errorDialog.visibility= GONE
         }
     }
 }
