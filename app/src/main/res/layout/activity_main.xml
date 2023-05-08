@@ -16,11 +16,11 @@
         android:layout_marginTop="@dimen/container_margin"
         android:src="@drawable/ic_arrow_left"
         android:backgroundTint="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent"
         android:contentDescription="@string/description_floating_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/title"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/errorDialog"

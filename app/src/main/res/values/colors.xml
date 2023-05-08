@@ -7,5 +7,5 @@
     <color name="btn_back_background">#222C47</color>
     <color name="vote_average_color">#6E3CC6</color>
     <color name="vote_count_color">#F60202</color>
-    <color name="error_button_background">#FFF65B2A</color>
+    <color name="error_button_background">#FB8059</color>
 </resources>
