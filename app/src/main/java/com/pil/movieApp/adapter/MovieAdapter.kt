@@ -34,8 +34,11 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
             binding.originalLanguage.text = itemView.context.getString(R.string.card_original_language, movie.originalLanguage)
 
             Glide.with(itemView.context)
-                .load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
+                .load( urlImage + movie.posterPath)
                 .into(binding.image)
         }
+    }
+    companion object{
+        private const val urlImage = "https://image.tmdb.org/t/p/w500"
     }
 }
