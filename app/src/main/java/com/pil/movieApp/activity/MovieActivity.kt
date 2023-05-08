@@ -1,6 +1,6 @@
 package com.pil.movieApp.activity
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -19,6 +19,7 @@ import com.pil.movieApp.mvvm.viewmodel.factory.ViewModelFactory
 import com.pil.movieApp.service.MovieClient
 import com.pil.movieApp.service.MovieRequestGenerator
 import com.pil.movieApp.service.MovieServiceImpl
+import com.pil.movieApp.util.AlertErrorDialog
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 
 
@@ -31,8 +32,6 @@ class MovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val intent = Intent(this, MainActivity::class.java)
 
         with(binding.btnBack){
             visibility = VISIBLE
@@ -60,11 +59,11 @@ class MovieActivity : AppCompatActivity() {
             ),
         )[MainViewModel::class.java]
 
-        viewModel.getValue().observe(this) { updateUI(it) }
+        viewModel.getValue().observe(this) { updateUI(it, MainActivity()) }
     }
 
 
-    private fun updateUI(data: MainViewModel.MainData) {
+    private fun updateUI(data: MainViewModel.MainData, activity: AppCompatActivity) {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
                 if (data.movies.isEmpty()){
@@ -76,7 +75,7 @@ class MovieActivity : AppCompatActivity() {
                 }
             }
             MainViewModel.MainStatus.ERROR -> {
-                binding.emptyStateText.visibility = RecyclerView.VISIBLE
+                AlertErrorDialog.showDialogError(activity)
             }
         }
     }
@@ -86,6 +85,7 @@ class MovieActivity : AppCompatActivity() {
         viewModel.callService()
 
         with(binding){
+            title.visibility = GONE
             btnMovies.visibility = GONE
             appDescription.visibility = GONE
             errorDialog.visibility= GONE
