@@ -17,10 +17,11 @@
         android:src="@drawable/ic_arrow_left"
         android:backgroundTint="@android:color/transparent"
         android:outlineSpotShadowColor="@android:color/transparent"
+        app:borderWidth="0dp"
         android:contentDescription="@string/description_floating_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/errorDialog"
