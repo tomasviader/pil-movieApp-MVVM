@@ -22,14 +22,8 @@ class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
     }
 
     override suspend fun getAllMovies(): List<Movie> {
-        /*return movieDao.getPopularMovies().let {
-            if (it.isNotEmpty()) {
-                CoroutineResult.Success(it.mapToLocalExercise())
-            }else{
-                CoroutineResult.Failure(Exception())
-            }
-        }*/
         return movieDao.getPopularMovies().mapToLocalExercise()
     }
+
 }
 

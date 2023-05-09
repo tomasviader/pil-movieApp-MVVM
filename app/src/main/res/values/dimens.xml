@@ -22,4 +22,5 @@
     <dimen name="overview_text_size">18sp</dimen>
     <dimen name="realease_text_size">16sp</dimen>
     <dimen name="padding_error_button">15dp</dimen>
+    <dimen name="empty_state_text_size">15sp</dimen>
 </resources>

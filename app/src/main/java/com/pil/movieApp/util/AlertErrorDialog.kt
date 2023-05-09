@@ -9,6 +9,7 @@ import com.pil.retrofit_room.R
 
 object AlertErrorDialog {
 
+
     fun showDialogError(activity : AppCompatActivity){
         val alert = AlertDialog.Builder(activity)
         alert.apply {
