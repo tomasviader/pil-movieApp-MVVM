@@ -22,6 +22,7 @@ class MovieServiceImpl(private val client: MovieClient) : MovieService {
             return CoroutineResult.Failure(e)
         }
         return CoroutineResult.Failure(ApiErrorException("Error in obtaining data from the api"))
+
     }
 
 }

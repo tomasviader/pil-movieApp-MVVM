@@ -78,7 +78,7 @@ class MovieActivity : AppCompatActivity() {
                 }
             }
             MainViewModel.MainStatus.ERROR -> {
-                AlertErrorDialog.showDialogError(this)
+                // AlertErrorDialog.showDialogError(this)
             }
         }
     }
