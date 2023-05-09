@@ -16,8 +16,8 @@ interface MovieDataBase {
 class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
 
     override suspend fun insertMovies(movies: List<Movie>) {
-        movies.forEach { exercise ->
-            movieDao.insertMovie(exercise.mapToDataBaseExercise())
+        movies.forEach { movie ->
+            movieDao.insertMovie(movie.mapToDataBaseExercise())
         }
     }
 
