@@ -9,7 +9,7 @@ import java.lang.Exception
 
 interface MovieDataBase {
     suspend fun insertMovies(movies: List<Movie>)
-    suspend fun getAllMovies(): CoroutineResult<List<Movie>>
+    suspend fun getAllMovies(): List<Movie>
 
 }
 
@@ -21,14 +21,9 @@ class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
         }
     }
 
-    override suspend fun getAllMovies(): CoroutineResult<List<Movie>> {
-        return movieDao.getPopularMovies().let {
-            if (it.isNotEmpty()) {
-                CoroutineResult.Success(it.mapToLocalExercise())
-            }else{
-                CoroutineResult.Failure(Exception())
-            }
-        }
+    override suspend fun getAllMovies(): List<Movie> {
+        return movieDao.getPopularMovies().mapToLocalExercise()
     }
+
 }
 

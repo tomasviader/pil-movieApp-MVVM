@@ -84,6 +84,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/empty_state_message"
+        android:textSize="@dimen/empty_state_text_size"
         android:textAlignment="center"
         android:visibility="gone"
         tools:text="MESSAGE ERROR" />

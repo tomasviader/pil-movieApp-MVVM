@@ -15,13 +15,13 @@ class MainModel(
     override suspend fun getMoviesFromApi(): CoroutineResult<List<Movie>> {
         return when (val movies = service.getMovies()) {
             is CoroutineResult.Success -> {
-                database.insertMovies(movies.data)
-                database.getAllMovies()
+                database.insertMovies(movies.data.movies)
+                CoroutineResult.Success(database.getAllMovies())
             }
 
             is CoroutineResult.Failure -> {
-                database.getAllMovies()
-                throw ServiceErrorException("\"Error getting movies from the service.\"")
+                CoroutineResult.Success(database.getAllMovies())
+                // throw ServiceErrorException("\"Error getting movies from the service.\"")
             }
         }
     }
