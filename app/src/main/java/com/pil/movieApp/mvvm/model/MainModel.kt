@@ -4,6 +4,7 @@ import com.pil.movieApp.database.MovieDataBase
 import com.pil.movieApp.mvvm.contract.MainContract
 import com.pil.movieApp.service.MovieService
 import com.pil.movieApp.service.model.Movie
+import com.pil.movieApp.util.ServiceErrorException
 import com.pil.movieApp.util.CoroutineResult
 
 class MainModel(
@@ -11,7 +12,7 @@ class MainModel(
     private val database: MovieDataBase,
 ) : MainContract.Model {
 
-    override suspend fun getMovies(): CoroutineResult<List<Movie>> {
+    override suspend fun getMoviesFromApi(): CoroutineResult<List<Movie>> {
         return when (val movies = service.getMovies()) {
             is CoroutineResult.Success -> {
                 database.insertMovies(movies.data)
@@ -20,7 +21,9 @@ class MainModel(
 
             is CoroutineResult.Failure -> {
                 database.getAllMovies()
+                throw ServiceErrorException("\"Error getting movies from the service.\"")
             }
         }
     }
+
 }

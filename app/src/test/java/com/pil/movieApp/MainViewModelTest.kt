@@ -50,7 +50,7 @@ class MainViewModelTest {
 
     @Test
     fun `callService should set SHOW_INFO status when getMovies is successful`() {
-        coEvery { model.getMovies() } returns CoroutineResult.Success(movieList)
+        coEvery { model.getMoviesFromApi() } returns CoroutineResult.Success(movieList)
 
         runBlocking { viewModel.callService().join() }
 
@@ -60,7 +60,7 @@ class MainViewModelTest {
 
     @Test
     fun `callService should set ERROR status when getMovies fail`() {
-        coEvery { model.getMovies() } returns CoroutineResult.Failure(Exception())
+        coEvery { model.getMoviesFromApi() } returns CoroutineResult.Failure(Exception())
 
         runBlocking { viewModel.callService().join() }
 

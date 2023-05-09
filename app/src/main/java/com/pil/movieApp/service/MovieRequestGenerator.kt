@@ -1,22 +1,20 @@
 package com.pil.movieApp.service
 
 
+
+import com.pil.retrofit_room.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
-
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MovieRequestGenerator {
 
-    private const val API_MOVIES_URL = "https://api.themoviedb.org/"
-    private const val bearerToken =
-        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZDgzMjY4MjczNWY0MTM4Yzc2ZDJiMWUyMGJiMTBlNiIs" +
-                "InN1YiI6IjY0NGFlYTY1NzI2ZmIxMDU3NDA1YjZiOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJd" +
-                "LCJ2ZXJzaW9uIjoxfQ.tDRU4h1Noc4pMXk9tIwQNfOpyZ-ivr28c4wAfQdSn3Y"
+    private const val API_MOVIES_URL = BuildConfig.API_URL
+    private const val bearerToken = BuildConfig.MOVIE_API_KEY
 
-    class OAuthInterceptor(private val tokenType: String, private val accessToken: String) :
+    private class OAuthInterceptor(private val tokenType: String, private val accessToken: String) :
         Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
@@ -25,16 +23,26 @@ object MovieRequestGenerator {
         }
     }
 
-    private val httpClient = OkHttpClient.Builder()
-        .addInterceptor(OAuthInterceptor("Bearer", bearerToken))
+    private val httpClient by lazy {
+        OkHttpClient.Builder()
+            .addInterceptor(OAuthInterceptor("Bearer", bearerToken))
+            .build()
+    }
 
-    private val builder = Retrofit.Builder()
-        .baseUrl(API_MOVIES_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+
+    private val builder by lazy {
+        Retrofit.Builder()
+            .baseUrl(API_MOVIES_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+    }
 
     fun <S> createService(serviceClass: Class<S>): S {
-        val retrofit = builder.client(httpClient.build()).build()
-        return retrofit.create(serviceClass)
+        try {
+            val retrofit = builder.client(httpClient).build()
+            return retrofit.create(serviceClass)
+        } catch (e: Exception) {
+            throw RuntimeException("Failed to create Retrofit service.")
+        }
     }
 
 }

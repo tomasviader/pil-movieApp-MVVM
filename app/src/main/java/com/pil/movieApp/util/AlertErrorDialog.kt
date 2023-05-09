@@ -13,11 +13,11 @@ object AlertErrorDialog {
         val alert = AlertDialog.Builder(activity)
         alert.apply {
             setIcon(R.drawable.baseline_error)
-            setTitle(alertTitle)
-            setMessage(alertMessage)
+            setTitle(R.string.alert_title)
+            setMessage(R.string.alert_message)
             setCancelable(false)
             setNeutralButton(
-                alertButtonText
+                R.string.alert_button_text
             ) { _, _ ->
                 val intent = Intent(activity, MainActivity::class.java)
                 activity.startActivity(intent)
@@ -26,7 +26,4 @@ object AlertErrorDialog {
         alert.show()
     }
 
-    private const val alertTitle = "Error in the database"
-    private const val alertMessage = "Error in the database"
-    private const val alertButtonText = "OK"
 }

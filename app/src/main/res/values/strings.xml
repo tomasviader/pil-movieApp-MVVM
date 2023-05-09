@@ -17,5 +17,8 @@
     <string name="button_back_text">BACK</string>
     <string name="error_button">ERROR BUTTON</string>
     <string name="description_floating_button">To home page</string>
+    <string name="alert_title">Error in the database</string>
+    <string name="alert_message">Error in the database</string>
+    <string name="alert_button_text">OK</string>
 
 </resources>

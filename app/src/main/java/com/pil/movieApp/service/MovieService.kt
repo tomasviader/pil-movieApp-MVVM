@@ -1,6 +1,7 @@
 package com.pil.movieApp.service
 
 import com.pil.movieApp.service.model.Movie
+import com.pil.movieApp.util.ApiErrorException
 import com.pil.movieApp.util.CoroutineResult
 
 interface MovieService {
@@ -17,9 +18,10 @@ class MovieServiceImpl(private val client: MovieClient) : MovieService {
                     return CoroutineResult.Success(it.movies)
                 }
             }
-        } catch (e: Exception) {
+        } catch (e: ApiErrorException) {
             return CoroutineResult.Failure(e)
         }
-        return CoroutineResult.Failure(java.lang.Exception())
+        return CoroutineResult.Failure(ApiErrorException("Error in obtaining data from the api"))
     }
+
 }

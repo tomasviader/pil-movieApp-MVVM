@@ -1,6 +1,7 @@
 package com.pil.movieApp.activity
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -33,10 +34,12 @@ class MovieActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val intentMainActivity = Intent(this, MainActivity::class.java)
+
         with(binding.btnBack){
             visibility = VISIBLE
             setOnClickListener {
-                startActivity(intent)
+                startActivity(intentMainActivity)
                 finish()
             }
         }
@@ -59,11 +62,11 @@ class MovieActivity : AppCompatActivity() {
             ),
         )[MainViewModel::class.java]
 
-        viewModel.getValue().observe(this) { updateUI(it, MainActivity()) }
+        viewModel.getValue().observe(this) { updateUI(it) }
     }
 
 
-    private fun updateUI(data: MainViewModel.MainData, activity: AppCompatActivity) {
+    private fun updateUI(data: MainViewModel.MainData) {
         when (data.status) {
             MainViewModel.MainStatus.SHOW_INFO -> {
                 if (data.movies.isEmpty()){
@@ -75,7 +78,7 @@ class MovieActivity : AppCompatActivity() {
                 }
             }
             MainViewModel.MainStatus.ERROR -> {
-                AlertErrorDialog.showDialogError(activity)
+                AlertErrorDialog.showDialogError(this)
             }
         }
     }

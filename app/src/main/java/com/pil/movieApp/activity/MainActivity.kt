@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnBack.visibility = View.INVISIBLE
         val intentMovieActivity = Intent(this, MovieActivity::class.java)
+        binding.btnBack.visibility = View.INVISIBLE
 
         binding.btnMovies.setOnClickListener {
             startActivity(intentMovieActivity)
