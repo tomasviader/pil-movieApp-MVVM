@@ -51,8 +51,6 @@ class ErrorDialogFragment : DialogFragment() {
             startActivity(intent)
             dismiss()
         }
-
-        // dialog?.setTitle(ARG_TITLE)
-
     }
+
 }
