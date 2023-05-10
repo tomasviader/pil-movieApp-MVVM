@@ -1,7 +1,5 @@
 package com.pil.movieApp.activity
 
-
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,7 +11,7 @@ import com.pil.retrofit_room.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    @SuppressLint("StringFormatInvalid")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,9 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.errorDialog.setOnClickListener{
             ErrorDialogFragment.newInstance(getString(R.string.alert_title),
                 getString(R.string.alert_message)).show(supportFragmentManager,getString(R.string.fragment_tag))
-
         }
-
 
     }
 

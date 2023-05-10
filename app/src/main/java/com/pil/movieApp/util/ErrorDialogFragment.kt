@@ -33,17 +33,16 @@ class ErrorDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentDialogBinding.inflate(layoutInflater)
-
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         alertTitle = arguments?.getString(ARG_TITLE)
-        alertMessage = arguments?.getString(ARG_TITLE)
+        alertMessage = arguments?.getString(ARG_MESSAGE)
 
         binding.alertTitle.text = alertTitle
         binding.alertMessage.text = alertMessage
@@ -53,6 +52,7 @@ class ErrorDialogFragment : DialogFragment() {
             dismiss()
         }
 
-        dialog?.setTitle(ARG_TITLE)
+        // dialog?.setTitle(ARG_TITLE)
+
     }
 }
