@@ -4,8 +4,8 @@
     >
 
     <stroke
-        android:width="3dp"
-        android:color="@color/black"
+        android:width="2dp"
+        android:color="@color/vote_count_color"
         />
 
 </shape>
