@@ -1,15 +1,12 @@
 package com.pil.movieApp.util
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import com.pil.retrofit_room.R
-import com.pil.retrofit_room.databinding.ActivityMainBinding
+import com.pil.movieApp.activity.MainActivity
 import com.pil.retrofit_room.databinding.FragmentDialogBinding
 
 class ErrorDialogFragment : DialogFragment() {
@@ -47,13 +44,15 @@ class ErrorDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         alertTitle = arguments?.getString(ARG_TITLE)
         alertMessage = arguments?.getString(ARG_TITLE)
+
         binding.alertTitle.text = alertTitle
         binding.alertMessage.text = alertMessage
-        dialog?.setTitle(ARG_TITLE)
-    }
+        binding.alertButton.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            dismiss()
+        }
 
-    fun showError(activity: AppCompatActivity){
-        val dialog = ErrorDialogFragment()
-        dialog.show(activity.supportFragmentManager,"Error Dialog Fragment")
+        dialog?.setTitle(ARG_TITLE)
     }
 }

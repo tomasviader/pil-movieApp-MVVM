@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.pil.movieApp.util.AlertErrorDialog
 import com.pil.movieApp.util.ErrorDialogFragment
 import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
@@ -28,10 +27,9 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-            //AlertErrorDialog.showDialogError(this)
         binding.errorDialog.setOnClickListener{
             ErrorDialogFragment.newInstance(getString(R.string.alert_title),
-                getString(R.string.alert_message)).show(supportFragmentManager,"ERROR")
+                getString(R.string.alert_message)).show(supportFragmentManager,getString(R.string.fragment_tag))
 
         }
 

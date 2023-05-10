@@ -8,39 +8,60 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/alert_dimen"
+        android:layout_height="@dimen/alert_dimen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/outline_custom"
         >
 
-        <TextView
-        android:id="@+id/alertTitle"
-        style="@style/TitleStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
-        android:paddingTop="@dimen/padding_top_title"
-        android:text="title"
-        app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <ImageView
+            android:id="@+id/iconError"
+            android:layout_width="@dimen/dimen_icon_alert"
+            android:layout_height="@dimen/dimen_icon_alert"
+            android:layout_marginTop="@dimen/container_margin"
+            android:src="@drawable/baseline_error"
+            android:contentDescription="@string/content_description"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/alertTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AlertTitleStyle"
+            tools:text="title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iconError"
             tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/alertMessage"
-        style="@style/TitleStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
-        android:paddingTop="@dimen/padding_top_title"
-        android:text="message"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/alertTitle" />
+        <TextView
+            android:id="@+id/alertMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AlertMessageStyle"
+            tools:text="message"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alertTitle"
+             />
+
+        <Button
+            android:id="@+id/alertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_button_text"
+            style="@style/AlertButtonStyle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alertMessage"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.pil.movieApp.service
 
-import com.pil.movieApp.service.model.Movie
 import com.pil.movieApp.service.model.MovieList
-import com.pil.movieApp.util.ApiErrorException
 import com.pil.movieApp.util.CoroutineResult
 
 interface MovieService {

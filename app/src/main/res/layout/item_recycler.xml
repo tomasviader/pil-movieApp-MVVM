@@ -9,11 +9,10 @@
     android:elevation="@dimen/card_elevation"
     tools:context="com.pil.movieApp.activity.MainActivity" >
 
-
     <TextView
         android:id="@+id/movie_title"
         style="@style/TitleStyle"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,7 @@
         android:id="@+id/image"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         android:contentDescription="@string/content_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,7 +35,7 @@
         android:id="@+id/overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         style="@style/OverviewStyle"
         app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintBottom_toTopOf="@id/release_date"
@@ -48,7 +47,7 @@
         android:id="@+id/release_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         style="@style/ReleaseDateStyle"
         app:layout_constraintTop_toBottomOf="@id/overview"
         tools:text="Release Date: releaseDate" />
@@ -57,9 +56,7 @@
         android:id="@+id/vote_average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recycler_margin_top"
-        android:textColor="@color/vote_count_color"
-        android:textStyle="bold"
+        style="@style/VoteAverageDateStyle"
         app:layout_constraintTop_toBottomOf="@id/release_date"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="Vote average: voteAverage" />
@@ -70,7 +67,7 @@
         android:textColor="@color/vote_average_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         app:layout_constraintTop_toBottomOf="@id/release_date"
         app:layout_constraintLeft_toRightOf="@id/vote_average"
         app:layout_constraintRight_toRightOf="parent"
@@ -81,14 +78,8 @@
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginTop="@dimen/container_margin"
         app:layout_constraintTop_toBottomOf="@id/vote_average"
         tools:text="Original language: originalLanguage" />
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

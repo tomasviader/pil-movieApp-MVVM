@@ -20,7 +20,8 @@ import com.pil.movieApp.mvvm.viewmodel.factory.ViewModelFactory
 import com.pil.movieApp.service.MovieClient
 import com.pil.movieApp.service.MovieRequestGenerator
 import com.pil.movieApp.service.MovieServiceImpl
-import com.pil.movieApp.util.AlertErrorDialog
+import com.pil.movieApp.util.ErrorDialogFragment
+import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 
 
@@ -78,7 +79,8 @@ class MovieActivity : AppCompatActivity() {
                 }
             }
             MainViewModel.MainStatus.ERROR -> {
-                // AlertErrorDialog.showDialogError(this)
+                ErrorDialogFragment.newInstance(getString(R.string.alert_title),
+                    getString(R.string.alert_message)).show(supportFragmentManager,getString(R.string.fragment_tag))
             }
         }
     }

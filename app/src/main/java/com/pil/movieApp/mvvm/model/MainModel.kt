@@ -4,7 +4,6 @@ import com.pil.movieApp.database.MovieDataBase
 import com.pil.movieApp.mvvm.contract.MainContract
 import com.pil.movieApp.service.MovieService
 import com.pil.movieApp.service.model.Movie
-import com.pil.movieApp.util.ServiceErrorException
 import com.pil.movieApp.util.CoroutineResult
 
 class MainModel(

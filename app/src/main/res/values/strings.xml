@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PIL-MOBILE-Retrofit-Room</string>
+    <string name="app_name">PIL-MOVIE-APP</string>
 
     <string name="movies">Movies App</string>
 
@@ -9,16 +9,20 @@
     <string name="card_vote_count">Vote count: %1$s</string>
     <string name="card_vote_average">Vote average: %1$s</string>
     <string name="card_original_language">Original language: %1$s</string>
+
     <string name="content_description">contentDescription</string>
     <string name="description_text">Welcome to Movies App, a tool that allows you to quickly at the touch of a button, you will have access to a selection of the most popular movies at the moment.</string>
     <string name="btn_text">Get movies</string>
     <string name="empty_state_message">Try again later</string>
     <string name="coroutine_failure_message">The application could not obtain the requested data.</string>
     <string name="button_back_text">BACK</string>
-    <string name="error_button">ERROR BUTTON</string>
     <string name="description_floating_button">To home page</string>
-    <string name="alert_title">Error in the database</string>
+    <string name="error_button">ERROR BUTTON</string>
+
+
+    <string name="alert_title">ERROR</string>
     <string name="alert_message">Error in the database</string>
     <string name="alert_button_text">OK</string>
+    <string name="fragment_tag">ERROR</string>
 
 </resources>

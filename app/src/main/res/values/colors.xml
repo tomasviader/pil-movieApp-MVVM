@@ -8,4 +8,5 @@
     <color name="vote_average_color">#6E3CC6</color>
     <color name="vote_count_color">#F60202</color>
     <color name="error_button_background">#FB8059</color>
+    <color name="alert_button_background_color">#171717</color>
 </resources>

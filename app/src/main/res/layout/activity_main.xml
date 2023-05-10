@@ -13,16 +13,13 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/container_margin"
         android:src="@drawable/ic_arrow_left"
-        android:backgroundTint="@android:color/transparent"
-        android:outlineSpotShadowColor="@android:color/transparent"
+        style="@style/ButtonBackStyle"
         app:borderWidth="0dp"
         android:contentDescription="@string/description_floating_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:visibility="gone" />
-
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -34,10 +31,8 @@
         android:id="@+id/errorDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/error_button_background"
-        android:textColor="@color/black"
-        android:padding="@dimen/padding_error_button"
         android:text="@string/error_button"
+        style="@style/ButtonErrorDialogStyle"
         android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/btnMovies"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,8 +45,6 @@
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
-        android:paddingTop="@dimen/padding_top_title"
         android:text="@string/movies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,10 +66,8 @@
         android:id="@+id/btnMovies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_description"
-        android:background="@color/background_button_movies"
+        style="@style/ButtonMoviesStyle"
         android:text="@string/btn_text"
-        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/appDescription"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -84,18 +75,14 @@
 
     <TextView
         android:id="@+id/empty_state_text"
-        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/empty_state_margin_top"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/EmptyStateText"
         android:text="@string/empty_state_message"
-        android:textSize="@dimen/empty_state_text_size"
-        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
         tools:text="MESSAGE ERROR" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -105,6 +92,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
