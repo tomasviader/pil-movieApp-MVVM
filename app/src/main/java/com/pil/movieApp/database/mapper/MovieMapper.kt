@@ -1,9 +1,9 @@
 package com.pil.movieApp.database.mapper
 
-import com.pil.movieApp.database.entity.MovieEntity
-import com.pil.movieApp.service.model.Movie
+import com.pil.movieApp.data.entity.MovieEntity
+import com.pil.movieApp.data.service.response.MovieResponse
 
-fun Movie.mapToDataBaseExercise(): MovieEntity =
+fun MovieResponse.mapToDataBaseExercise(): MovieEntity =
     MovieEntity(
         title = title,
         overview = overview,
@@ -14,9 +14,9 @@ fun Movie.mapToDataBaseExercise(): MovieEntity =
         voteCount = voteCount
     )
 
-fun List<MovieEntity>.mapToLocalExercise(): List<Movie> =
+fun List<MovieEntity>.mapToLocalExercise(): List<MovieResponse> =
     map { entity ->
-        Movie(
+        MovieResponse(
             title = entity.title,
             overview = entity.overview,
             posterPath = entity.posterPath,

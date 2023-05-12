@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/container_margin"
     android:background="@drawable/background_app"
-    tools:context="com.pil.movieApp.activity.MainActivity"
+    tools:context="com.pil.movieApp.presentation.activity.MainActivity"
     >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
