@@ -2,18 +2,20 @@ package com.pil.movieApp.data.service
 
 import com.pil.movieApp.data.service.api.MovieClient
 import com.pil.movieApp.domain.service.MovieService
-import com.pil.movieApp.data.service.response.MovieListResponse
+import com.pil.movieApp.data.service.utils.transformToList
+import com.pil.movieApp.domain.entity.Movie
 import com.pil.movieApp.domain.util.CoroutineResult
 
 
-class MovieServiceImpl(private val client: MovieClient) : MovieService {
+class MovieServiceImpl(private val api: MovieRequestGenerator) : MovieService {
 
-    override suspend fun getMovies(): CoroutineResult<MovieListResponse> {
+    override suspend fun getMovies(): CoroutineResult<List<Movie>> {
         try {
-            val response = client.getPopularMovies().execute()
+            val callResponse = api.createService(MovieClient::class.java).getPopularMovies()
+            val response = callResponse.execute()
             if (response.isSuccessful) {
                 response.body()?.let {
-                    return CoroutineResult.Success(it)
+                    return CoroutineResult.Success(it.transformToList())
                 }
             }
         return CoroutineResult.Failure(Exception(response.errorBody().toString()))

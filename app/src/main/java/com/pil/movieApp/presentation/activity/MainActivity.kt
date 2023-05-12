@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pil.movieApp.domain.util.ErrorDialogFragment
 import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
+import org.koin.core.component.KoinComponent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KoinComponent {
 
     private lateinit var binding: ActivityMainBinding
 

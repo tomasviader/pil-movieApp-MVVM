@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-import com.pil.movieApp.data.service.response.MovieResponse
+import com.pil.movieApp.domain.entity.Movie
 import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ItemRecyclerBinding
 
-class MovieAdapter(private val movies: List<MovieResponse>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false))
@@ -25,7 +25,7 @@ class MovieAdapter(private val movies: List<MovieResponse>) : RecyclerView.Adapt
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemRecyclerBinding.bind(itemView)
 
-        fun bind(movie: MovieResponse) {
+        fun bind(movie: Movie) {
             binding.movieTitle.text = itemView.context.getString(R.string.card_title, movie.title)
             binding.overview.text = itemView.context.getString(R.string.card_overview, movie.overview)
             binding.releaseDate.text = itemView.context.getString(R.string.card_release_date, movie.releaseDate)

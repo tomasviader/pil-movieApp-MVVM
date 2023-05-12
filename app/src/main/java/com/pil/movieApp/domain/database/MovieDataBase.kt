@@ -7,6 +7,6 @@ import com.pil.movieApp.domain.util.CoroutineResult
 
 
 interface MovieDataBase {
-    suspend fun insertMovies(movies: MovieListResponse)
+    suspend fun insertMovies(moviesList: List<Movie>)
     suspend fun getAllMovies(): CoroutineResult<List<Movie>>
 }
