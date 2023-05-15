@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pil.movieApp.presentation.adapter.MovieAdapter
 import com.pil.movieApp.presentation.mvvm.viewmodel.MoviesViewModel
-import com.pil.movieApp.domain.util.ErrorDialogFragment
-import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.component.KoinComponent
@@ -45,19 +43,12 @@ class MovieActivity : AppCompatActivity(), KoinComponent {
     private fun updateUI(data: MoviesViewModel.MainData) {
         when (data.status) {
             MoviesViewModel.MainStatus.SHOW_INFO -> {
-                if (data.movies.isEmpty()) {
-                    binding.emptyStateText.visibility = RecyclerView.VISIBLE
-                } else {
-                    binding.recycler.layoutManager = LinearLayoutManager(this)
-                    binding.recycler.adapter = MovieAdapter(data.movies)
-                }
+                binding.recycler.layoutManager = LinearLayoutManager(this)
+                binding.recycler.adapter = MovieAdapter(data.movies)
             }
 
-            MoviesViewModel.MainStatus.ERROR -> {
-                ErrorDialogFragment.newInstance(
-                    getString(R.string.alert_title),
-                    getString(R.string.alert_message)
-                ).show(supportFragmentManager, getString(R.string.fragment_tag))
+            MoviesViewModel.MainStatus.EMPTY_STATE -> {
+                binding.emptyStateText.visibility = RecyclerView.VISIBLE
             }
         }
     }

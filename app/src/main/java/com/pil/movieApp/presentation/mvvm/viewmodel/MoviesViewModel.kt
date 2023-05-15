@@ -27,7 +27,7 @@ class MoviesViewModel(private val model: MoviesModel) : ViewModel() {
 
                 is CoroutineResult.Failure -> {
                     mutableLiveData.value =
-                        MainData(status = MainStatus.ERROR, exception = result.exception)
+                        MainData(status = MainStatus.EMPTY_STATE)
                 }
             }
         }
@@ -41,6 +41,6 @@ class MoviesViewModel(private val model: MoviesModel) : ViewModel() {
 
     enum class MainStatus {
         SHOW_INFO,
-        ERROR
+        EMPTY_STATE,
     }
 }
