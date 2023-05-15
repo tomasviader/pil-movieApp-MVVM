@@ -18,9 +18,9 @@ class MovieDataBaseImpl(private val movieDao: MovieDao) : MovieDataBase {
 
     override suspend fun getAllMovies(): CoroutineResult<List<Movie>> =
         movieDao.getPopularMovies().let {
-            if (it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 CoroutineResult.Success(it.toMovieList())
-            }else {
+            } else {
                 CoroutineResult.Failure(Exception())
             }
         }

@@ -1,10 +1,10 @@
 package com.pil.movieApp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.pil.movieApp.presentation.mvvm.contract.MainContract
 import com.pil.movieApp.presentation.mvvm.viewmodel.MoviesViewModel
-import com.pil.movieApp.data.service.response.MovieResponse
+import com.pil.movieApp.domain.entity.Movie
 import com.pil.movieApp.domain.util.CoroutineResult
+import com.pil.movieApp.presentation.mvvm.model.MoviesModel
 import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.Dispatchers
@@ -28,10 +28,10 @@ class MoviesViewModelTest {
     private lateinit var viewModel: MoviesViewModel
 
     @MockK
-    private lateinit var model: MainContract.Model
+    private lateinit var model: MoviesModel
 
     @MockK
-    private lateinit var movieList: List<MovieResponse>
+    private lateinit var movieList: List<Movie>
 
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -50,7 +50,7 @@ class MoviesViewModelTest {
 
     @Test
     fun `callService should set SHOW_INFO status when getMovies is successful`() {
-        coEvery { model.getMoviesFromApi() } returns CoroutineResult.Success(movieList)
+        coEvery { model.getMovies() } returns CoroutineResult.Success(movieList)
 
         runBlocking { viewModel.callService().join() }
 
@@ -60,7 +60,7 @@ class MoviesViewModelTest {
 
     @Test
     fun `callService should set ERROR status when getMovies fail`() {
-        coEvery { model.getMoviesFromApi() } returns CoroutineResult.Failure(Exception())
+        coEvery { model.getMovies() } returns CoroutineResult.Failure(Exception())
 
         runBlocking { viewModel.callService().join() }
 

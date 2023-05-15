@@ -1,6 +1,6 @@
 package com.pil.movieApp.domain.entity
 
-data class Movie (
+data class Movie(
     val title: String,
     val overview: String,
     val posterPath: String,

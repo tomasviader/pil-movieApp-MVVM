@@ -19,7 +19,7 @@ class ErrorDialogFragment : DialogFragment() {
         private const val ARG_TITLE = "title"
         private const val ARG_MESSAGE = "message"
 
-        fun newInstance(title : String? = null, message: String? = null) : ErrorDialogFragment {
+        fun newInstance(title: String? = null, message: String? = null): ErrorDialogFragment {
             val fragment = ErrorDialogFragment()
             val args = Bundle()
             args.putString(ARG_TITLE, title)
@@ -35,7 +35,11 @@ class ErrorDialogFragment : DialogFragment() {
         binding = FragmentDialogBinding.inflate(layoutInflater)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return binding.root
     }
 

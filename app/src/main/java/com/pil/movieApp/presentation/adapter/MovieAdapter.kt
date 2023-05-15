@@ -10,10 +10,13 @@ import com.pil.movieApp.domain.entity.Movie
 import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ItemRecyclerBinding
 
-class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val movies: List<Movie>) :
+    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_recycler, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,18 +30,24 @@ class MovieAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<Movie
 
         fun bind(movie: Movie) {
             binding.movieTitle.text = itemView.context.getString(R.string.card_title, movie.title)
-            binding.overview.text = itemView.context.getString(R.string.card_overview, movie.overview)
-            binding.releaseDate.text = itemView.context.getString(R.string.card_release_date, movie.releaseDate)
-            binding.voteCount.text = itemView.context.getString(R.string.card_vote_count, movie.voteCount.toString())
-            binding.voteAverage.text = itemView.context.getString(R.string.card_vote_average, movie.voteAverage.toString())
-            binding.originalLanguage.text = itemView.context.getString(R.string.card_original_language, movie.originalLanguage)
+            binding.overview.text =
+                itemView.context.getString(R.string.card_overview, movie.overview)
+            binding.releaseDate.text =
+                itemView.context.getString(R.string.card_release_date, movie.releaseDate)
+            binding.voteCount.text =
+                itemView.context.getString(R.string.card_vote_count, movie.voteCount.toString())
+            binding.voteAverage.text =
+                itemView.context.getString(R.string.card_vote_average, movie.voteAverage.toString())
+            binding.originalLanguage.text =
+                itemView.context.getString(R.string.card_original_language, movie.originalLanguage)
 
             Glide.with(itemView.context)
-                .load( urlImage + movie.posterPath)
+                .load(urlImage + movie.posterPath)
                 .into(binding.image)
         }
     }
-    companion object{
+
+    companion object {
         private const val urlImage = "https://image.tmdb.org/t/p/w500"
     }
 }

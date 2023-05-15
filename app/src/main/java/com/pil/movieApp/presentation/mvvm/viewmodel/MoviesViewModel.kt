@@ -17,14 +17,17 @@ class MoviesViewModel(private val model: MoviesModel) : ViewModel() {
     private val mutableLiveData: MutableLiveData<MainData> = MutableLiveData()
     fun getValue(): LiveData<MainData> = mutableLiveData
 
-     fun callService() = viewModelScope.launch {
+    fun callService() = viewModelScope.launch {
         withContext(Dispatchers.IO) { model.getMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
-                    mutableLiveData.value = MainData(status = MainStatus.SHOW_INFO, movies = result.data)
+                    mutableLiveData.value =
+                        MainData(status = MainStatus.SHOW_INFO, movies = result.data)
                 }
+
                 is CoroutineResult.Failure -> {
-                    mutableLiveData.value = MainData(status = MainStatus.ERROR, exception = result.exception)
+                    mutableLiveData.value =
+                        MainData(status = MainStatus.ERROR, exception = result.exception)
                 }
             }
         }

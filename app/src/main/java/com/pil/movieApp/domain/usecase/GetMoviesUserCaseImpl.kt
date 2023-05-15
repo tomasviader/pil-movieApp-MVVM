@@ -1,13 +1,12 @@
 package com.pil.movieApp.domain.usecase
 
 
-
 import com.pil.movieApp.domain.database.MovieDataBase
 import com.pil.movieApp.domain.entity.Movie
 import com.pil.movieApp.domain.service.MovieService
 import com.pil.movieApp.domain.util.CoroutineResult
 
-interface GetMoviesUserCase{
+interface GetMoviesUserCase {
     suspend operator fun invoke(): CoroutineResult<List<Movie>>
 }
 
@@ -25,7 +24,6 @@ class GetMoviesUserCaseImpl(
 
             is CoroutineResult.Failure -> {
                 database.getAllMovies()
-                // throw ServiceErrorException("\"Error getting movies from the service.\"")
             }
         }
     }

@@ -26,9 +26,11 @@ class MainActivity : AppCompatActivity(), KoinComponent {
             finish()
         }
 
-        binding.errorDialog.setOnClickListener{
-            ErrorDialogFragment.newInstance(getString(R.string.alert_title),
-                getString(R.string.alert_message)).show(supportFragmentManager,getString(R.string.fragment_tag))
+        binding.errorDialog.setOnClickListener {
+            ErrorDialogFragment.newInstance(
+                getString(R.string.alert_title),
+                getString(R.string.alert_message)
+            ).show(supportFragmentManager, getString(R.string.fragment_tag))
         }
 
     }
