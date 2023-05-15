@@ -1,10 +1,7 @@
 package com.pil.movieApp.data.database
 
-import com.pil.movieApp.data.service.response.MovieListResponse
-import com.pil.movieApp.database.mapper.mapToDataBaseExercise
-import com.pil.movieApp.database.mapper.mapToLocalExercise
+
 import com.pil.movieApp.domain.database.MovieDataBase
-import com.pil.movieApp.data.service.response.MovieResponse
 import com.pil.movieApp.data.service.utils.toMovieDB
 import com.pil.movieApp.data.service.utils.toMovieList
 import com.pil.movieApp.domain.entity.Movie

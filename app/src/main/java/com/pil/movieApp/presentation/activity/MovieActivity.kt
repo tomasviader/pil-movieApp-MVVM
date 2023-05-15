@@ -39,22 +39,6 @@ class MovieActivity : AppCompatActivity(), KoinComponent {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        startKoin {
-            androidContext(this@MovieActivity)
-
-            modules(
-                listOf(
-                    ViewModelModule.viewModelModule,
-                    ServiceModule.serviceModule,
-                    ModelModule.modelModule,
-                    UseCaseModule.useCaseModule,
-                    ApiModule.apiModule,
-                    DBModule.dbModule,
-                    DataBaseModule.dataBaseModule
-                )
-            )
-        }
-
         val intentMainActivity = Intent(this, MainActivity::class.java)
 
         with(binding.btnBack){

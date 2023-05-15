@@ -18,10 +18,10 @@ class MovieServiceImpl(private val api: MovieRequestGenerator) : MovieService {
                     return CoroutineResult.Success(it.transformToList())
                 }
             }
-        return CoroutineResult.Failure(Exception(response.errorBody().toString()))
         } catch (e: Exception) {
             return CoroutineResult.Failure(e)
         }
+        return CoroutineResult.Failure(Exception())
     }
 
 }

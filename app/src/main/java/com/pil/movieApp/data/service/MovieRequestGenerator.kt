@@ -9,10 +9,7 @@ import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object MovieRequestGenerator {
-
-    private const val API_MOVIES_URL = BuildConfig.API_URL
-    private const val bearerToken = BuildConfig.MOVIE_API_KEY
+class MovieRequestGenerator {
 
     private class OAuthInterceptor(private val tokenType: String, private val accessToken: String) :
         Interceptor {
@@ -25,14 +22,14 @@ object MovieRequestGenerator {
 
     private val httpClient by lazy {
         OkHttpClient.Builder()
-            .addInterceptor(OAuthInterceptor("Bearer", bearerToken))
+            .addInterceptor(OAuthInterceptor("Bearer", BuildConfig.MOVIE_API_KEY))
             .build()
     }
 
 
     private val builder by lazy {
         Retrofit.Builder()
-            .baseUrl(API_MOVIES_URL)
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
     }
 

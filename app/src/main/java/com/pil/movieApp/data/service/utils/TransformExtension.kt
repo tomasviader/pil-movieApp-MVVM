@@ -2,12 +2,12 @@ package com.pil.movieApp.data.service.utils
 
 
 import com.pil.movieApp.data.entity.MovieEntity
-import com.pil.movieApp.data.service.response.MovieResponse
+import com.pil.movieApp.data.service.response.DataResponse
 import com.pil.movieApp.domain.entity.Movie
 
-fun MovieResponse.transformToList(): List<Movie> {
+fun DataResponse.transformToList(): List<Movie> {
     val movieList = mutableListOf<Movie>()
-    movieList.forEach() {
+    data.movies.forEach() {
         movieList.add(
             Movie(
                 it.title,
@@ -23,12 +23,8 @@ fun MovieResponse.transformToList(): List<Movie> {
     return movieList
 }
 
-fun MovieResponse.toMovie() = Movie(
-    this.title, this.overview, this.posterPath, this.releaseDate,this.originalLanguage,this.voteAverage,this.voteCount
-)
-
-fun MovieEntity.toCharacter() = Movie(this.title, this.overview, this.posterPath, this.releaseDate,this.originalLanguage,this.voteAverage,this.voteCount)
+fun MovieEntity.toMovie() = Movie(this.title, this.overview, this.posterPath, this.releaseDate,this.originalLanguage,this.voteAverage,this.voteCount)
 
 fun Movie.toMovieDB() = MovieEntity(this.title, this.overview, this.posterPath, this.releaseDate,this.originalLanguage,this.voteAverage,this.voteCount)
 
-fun List<MovieEntity>.toMovieList() = this.map { it.toCharacter() }
+fun List<MovieEntity>.toMovieList() = this.map { it.toMovie() }
