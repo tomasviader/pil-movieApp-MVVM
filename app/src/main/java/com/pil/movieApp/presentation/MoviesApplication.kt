@@ -1,19 +1,12 @@
 package com.pil.movieApp.presentation
 
 import android.app.Application
-import com.pil.movieApp.di.ApiModule
 import com.pil.movieApp.di.ApiModule.apiModule
-import com.pil.movieApp.di.DBModule
 import com.pil.movieApp.di.DBModule.dbModule
-import com.pil.movieApp.di.DataBaseModule
 import com.pil.movieApp.di.DataBaseModule.dataBaseModule
-import com.pil.movieApp.di.ServiceModule
 import com.pil.movieApp.di.ServiceModule.serviceModule
-import com.pil.movieApp.di.UseCaseModule
 import com.pil.movieApp.di.UseCaseModule.useCaseModule
-import com.pil.movieApp.presentation.di.ModelModule
 import com.pil.movieApp.presentation.di.ModelModule.modelModule
-import com.pil.movieApp.presentation.di.ViewModelModule
 import com.pil.movieApp.presentation.di.ViewModelModule.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent

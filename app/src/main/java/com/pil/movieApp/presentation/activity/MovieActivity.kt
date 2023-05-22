@@ -7,7 +7,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.pil.movieApp.presentation.adapter.MovieAdapter
 import com.pil.movieApp.presentation.mvvm.viewmodel.MoviesViewModel
 import com.pil.retrofit_room.databinding.ActivityMainBinding
@@ -48,7 +47,7 @@ class MovieActivity : AppCompatActivity(), KoinComponent {
             }
 
             MoviesViewModel.MainStatus.EMPTY_STATE -> {
-                binding.emptyStateText.visibility = RecyclerView.VISIBLE
+                binding.emptyStateText.visibility = VISIBLE
             }
         }
     }

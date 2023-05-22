@@ -2,7 +2,7 @@ package com.pil.movieApp.presentation.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.view.View.INVISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import com.pil.movieApp.domain.util.ErrorDialogFragment
 import com.pil.retrofit_room.R
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         setContentView(binding.root)
 
         val intentMovieActivity = Intent(this, MovieActivity::class.java)
-        binding.btnBack.visibility = View.INVISIBLE
+        binding.btnBack.visibility = INVISIBLE
 
         binding.btnMovies.setOnClickListener {
             startActivity(intentMovieActivity)

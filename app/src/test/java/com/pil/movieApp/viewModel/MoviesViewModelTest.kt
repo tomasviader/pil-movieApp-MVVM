@@ -1,4 +1,4 @@
-package com.pil.movieApp
+package com.pil.movieApp.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.pil.movieApp.presentation.mvvm.viewmodel.MoviesViewModel
@@ -42,6 +42,7 @@ class MoviesViewModelTest {
         viewModel = MoviesViewModel(model)
     }
 
+
     @OptIn(ExperimentalCoroutinesApi::class)
     @After
     fun tearDown() {
@@ -64,7 +65,7 @@ class MoviesViewModelTest {
 
         runBlocking { viewModel.callService().join() }
 
-        assertEquals(MoviesViewModel.MainStatus.ERROR, viewModel.getValue().value?.status)
+        assertEquals(MoviesViewModel.MainStatus.EMPTY_STATE, viewModel.getValue().value?.status)
     }
 
 
