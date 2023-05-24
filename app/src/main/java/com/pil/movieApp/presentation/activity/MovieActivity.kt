@@ -24,7 +24,7 @@ class MovieActivity : AppCompatActivity(), KoinComponent {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intentMainActivity = Intent(this, MainActivity::class.java)
+        /*val intentMainActivity = Intent(this, MainActivity::class.java)
 
         with(binding.btnBack) {
             visibility = VISIBLE
@@ -32,31 +32,37 @@ class MovieActivity : AppCompatActivity(), KoinComponent {
                 startActivity(intentMainActivity)
                 finish()
             }
-        }
+        }*/
 
-        viewModel.callService()
+        binding.btnBack.setOnClickListener { viewModel.onBackButtonPressed() }
+
         viewModel.getValue().observe(this) { updateUI(it) }
+        viewModel.callService()
     }
 
 
-    private fun updateUI(data: MoviesViewModel.MainData) {
+    private fun updateUI(data: MoviesViewModel.MoviesData) {
         when (data.status) {
-            MoviesViewModel.MainStatus.SHOW_INFO -> {
+            MoviesViewModel.MoviesStatus.SHOW_INFO -> {
                 binding.recycler.layoutManager = LinearLayoutManager(this)
                 binding.recycler.adapter = MovieAdapter(data.movies)
             }
-
-            MoviesViewModel.MainStatus.EMPTY_STATE -> {
+            MoviesViewModel.MoviesStatus.EMPTY_STATE -> {
                 binding.emptyStateText.visibility = VISIBLE
             }
+            MoviesViewModel.MoviesStatus.BACK_BUTTON -> {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+
         }
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.callService()
 
         with(binding) {
+            btnBack.visibility = VISIBLE
             title.visibility = GONE
             btnMovies.visibility = GONE
             appDescription.visibility = GONE

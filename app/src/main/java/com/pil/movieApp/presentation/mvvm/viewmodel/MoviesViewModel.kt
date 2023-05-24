@@ -14,33 +14,39 @@ import kotlinx.coroutines.withContext
 
 class MoviesViewModel(private val model: MoviesModel) : ViewModel() {
 
-    private val mutableLiveData: MutableLiveData<MainData> = MutableLiveData()
-    fun getValue(): LiveData<MainData> = mutableLiveData
+    private val mutableLiveData: MutableLiveData<MoviesData> = MutableLiveData()
+    fun getValue(): LiveData<MoviesData> = mutableLiveData
 
     fun callService() = viewModelScope.launch {
         withContext(Dispatchers.IO) { model.getMovies() }.let { result ->
             when (result) {
                 is CoroutineResult.Success -> {
                     mutableLiveData.value =
-                        MainData(status = MainStatus.SHOW_INFO, movies = result.data)
+                        MoviesData(status = MoviesStatus.SHOW_INFO, movies = result.data)
                 }
 
                 is CoroutineResult.Failure -> {
                     mutableLiveData.value =
-                        MainData(status = MainStatus.EMPTY_STATE)
+                        MoviesData(status = MoviesStatus.EMPTY_STATE)
                 }
             }
         }
     }
 
-    data class MainData(
-        val status: MainStatus,
+    fun onBackButtonPressed() {
+        mutableLiveData.postValue(MoviesData(MoviesStatus.BACK_BUTTON))
+    }
+
+
+    data class MoviesData(
+        val status: MoviesStatus,
         val movies: List<Movie> = emptyList(),
         val exception: Exception? = null,
     )
 
-    enum class MainStatus {
+    enum class MoviesStatus {
         SHOW_INFO,
         EMPTY_STATE,
+        BACK_BUTTON
     }
 }

@@ -56,7 +56,7 @@ class MoviesViewModelTest {
         runBlocking { viewModel.callService().join() }
 
         assertEquals(movieList, viewModel.getValue().value?.movies)
-        assertEquals(MoviesViewModel.MainStatus.SHOW_INFO, viewModel.getValue().value?.status)
+        assertEquals(MoviesViewModel.MoviesStatus.SHOW_INFO, viewModel.getValue().value?.status)
     }
 
     @Test
@@ -65,7 +65,7 @@ class MoviesViewModelTest {
 
         runBlocking { viewModel.callService().join() }
 
-        assertEquals(MoviesViewModel.MainStatus.EMPTY_STATE, viewModel.getValue().value?.status)
+        assertEquals(MoviesViewModel.MoviesStatus.EMPTY_STATE, viewModel.getValue().value?.status)
     }
 
 
