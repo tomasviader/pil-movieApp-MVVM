@@ -3,7 +3,7 @@ package com.pil.movieApp.presentation.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.pil.movieApp.domain.util.ErrorDialogFragment
+import com.pil.movieApp.presentation.util.ErrorDialogFragment
 import com.pil.movieApp.presentation.mvvm.viewmodel.MainViewModel
 import com.pil.retrofit_room.R
 import com.pil.retrofit_room.databinding.ActivityMainBinding

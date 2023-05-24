@@ -1,4 +1,4 @@
-package com.pil.movieApp.domain.util
+package com.pil.movieApp.presentation.util
 
 import android.content.Intent
 import android.os.Bundle
